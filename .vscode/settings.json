@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "konami.h": "c",
+        "controls.h": "c",
+        "bgm.h": "c",
+        "dfs.h": "c",
+        "limits": "c",
+        "type_traits": "c",
+        "rdp.h": "c",
+        "fps.h": "c"
+    },
+    "editor.formatOnSave": true
+}
