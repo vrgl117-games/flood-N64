@@ -79,6 +79,9 @@ int main()
                 {
                     screen_init();
                     game_init();
+                    menu = menu_new_game;
+                    menu.width = menu.max_width;
+                    menu.height = menu.max_height;
                     screen = title;
                 }
                 screen_lang(disp);
@@ -86,11 +89,11 @@ int main()
             case title: // press start.
                 if (keys.start)
                 {
+                    menu.visible = false;
                     game_reset();
                     bgm_start();
                     screen = game;
                 }
-
                 screen_title(disp);
                 break;
             case game: // actual game.

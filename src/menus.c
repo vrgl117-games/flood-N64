@@ -26,8 +26,8 @@ menu_t menu_credits;
 
 menu_t menu_pause = {
     .title = "title_pause",
-    .max_width = 260,
-    .max_height = 80 + 30 * 4,
+    .max_width = 280,
+    .max_height = 80 + 32 * 4,
     .options_size = 4,
     .options = {{.text = "continue", .action = bgm_play_pause, .close = true}, {.text = "restart", .action = game_reset, .close = true}, {.text = "music", .toggle = bgm_toggle, .close = false}, {.text = "credits", .next = &menu_credits, .close = false}},
     .visible = true,
@@ -36,8 +36,8 @@ menu_t menu_pause = {
 menu_t menu_credits = {
     .title = "title_credits",
     .text = "text_credits",
-    .max_width = 380,
-    .max_height = 80 + 30 + 220,
+    .max_width = 410,
+    .max_height = 80 + 32 + 260,
     .options_size = 1,
     .options = {{.text = "back", .next = &menu_pause, .close = false}},
     .visible = true,
@@ -46,16 +46,16 @@ menu_t menu_credits = {
 menu_t menu_you_win = {
     .title = "title_you_win",
     .max_width = 240,
-    .max_height = 80 + 30 * 2,
-    .options_size = 2,
-    .options = {{.text = "continue", .action = bgm_play_pause, .close = true}, {.text = "restart", .action = game_reset, .close = true}},
+    .max_height = 80 + 32,
+    .options_size = 1,
+    .options = {{.text = "restart", .action = game_reset, .close = true}},
     .visible = true,
 };
 
 menu_t menu_game_over = {
     .title = "title_game_over",
     .max_width = 240,
-    .max_height = 80 + 30,
+    .max_height = 80 + 32,
     .options_size = 1,
     .options = {{.text = "restart", .action = game_reset, .close = true}},
     .visible = true,
@@ -64,8 +64,8 @@ menu_t menu_game_over = {
 menu_t menu_new_game = {
     .title = "title_new_game",
     .text = "text_help",
-    .max_width = 440,
-    .max_height = 80 + 30 + 140,
+    .max_width = 500,
+    .max_height = 80 + 32 + 200,
     .options_size = 1,
     .options = {{.text = "continue", .action = NULL, .close = true}},
     .visible = true,
@@ -114,7 +114,7 @@ void menu_draw(display_context_t disp, menu_t *menu)
             menu->height -= h_step;
     }
     rdp_attach(disp);
-    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, COLOR_BG, COLOR_GRID_BG);
+    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, COLOR_GRID_BG, COLOR_BG);
     rdp_detach_display();
 
     if (menu->width >= menu->max_width && menu->height >= menu->max_height)
