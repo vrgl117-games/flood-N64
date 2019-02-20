@@ -132,7 +132,7 @@ void screen_game(display_context_t disp)
     rdp_draw_filled_fullscreen(COLOR_BG);
 
     // draw the board.
-    game_draw(disp, 96, 16);
+    game_draw(disp, 132, 96);
 
     rdp_detach_display();
 }

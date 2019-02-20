@@ -15,7 +15,7 @@
 
 typedef struct game
 {
-    int cells[576]; //24*24
+    int cells[24][24];
     int board_size;
     int num_colors;
 
