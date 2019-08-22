@@ -78,11 +78,9 @@ int main()
                 if (lang_press(keys))
                 {
                     screen_init();
-                    game_init();
                     menu = menu_new_game;
-                    menu.width = menu.max_width;
-                    menu.height = menu.max_height;
                     screen = title;
+                    break;
                 }
                 screen_lang(disp);
                 break;
@@ -90,9 +88,16 @@ int main()
                 if (keys.start)
                 {
                     menu.visible = false;
+                    game_init();
                     game_reset();
                     bgm_start();
                     screen = game;
+                    screen_resize_logo();
+                    break;
+                }
+                else
+                {
+                    menu_press(&menu, keys);
                 }
                 screen_title(disp);
                 break;

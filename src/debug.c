@@ -6,8 +6,8 @@
  * of the Apache license. See the LICENSE file for details.
  */
 
-#include <malloc.h>
 #include <stdarg.h>
+#include <stdlib.h>
 
 #include "debug.h"
 #include "graphics.h"

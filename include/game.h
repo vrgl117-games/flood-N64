@@ -40,6 +40,8 @@ int game_max_turn();
 void game_init();
 status_t game_play(control_t keys);
 void game_draw(display_context_t disp, int grid_x, int grid_y);
+int game_num_colors_toggle(int change);
+int game_size_toggle(int change);
 int game_turn();
 void game_reset();
 bool game_stop_rumble();

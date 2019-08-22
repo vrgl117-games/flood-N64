@@ -6,8 +6,9 @@
  * of the Apache license. See the LICENSE file for details.
  */
 
-#include <malloc.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 #include <string.h>
 
 #include "bgm.h"
@@ -37,7 +38,7 @@ menu_t menu_credits = {
     .title = "title_credits",
     .text = "text_credits",
     .max_width = 410,
-    .max_height = 80 + 32 + 260,
+    .max_height = 80 + 32 + 300,
     .options_size = 1,
     .options = {{.text = "back", .next = &menu_pause, .close = false}},
     .visible = true,
@@ -64,10 +65,10 @@ menu_t menu_game_over = {
 menu_t menu_new_game = {
     .title = "title_new_game",
     .text = "text_help",
-    .max_width = 500,
+    .max_width = 520,
     .max_height = 80 + 32 + 200,
-    .options_size = 1,
-    .options = {{.text = "continue", .action = NULL, .close = true}},
+    .options_size = 2,
+    .options = {{.text = "size", .toggle = game_size_toggle, .close = false}, {.text = "colors", .toggle = game_num_colors_toggle, .close = false}},
     .visible = true,
 };
 
@@ -114,21 +115,21 @@ void menu_draw(display_context_t disp, menu_t *menu)
             menu->height -= h_step;
     }
     rdp_attach(disp);
-    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, COLOR_GRID_BG, COLOR_BG);
+    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, COLOR_MENU_BG, COLOR_GREY);
     rdp_detach_display();
 
     if (menu->width >= menu->max_width && menu->height >= menu->max_height)
     {
         if (menu->title != NULL)
         {
-            sprite_t *title = dfs_loadf("/gfx/sprites/%s/%s.sprite", lang, menu->title);
+            sprite_t *title = dfs_load_spritef("/gfx/sprites/%s/%s.sprite", lang, menu->title);
             graphics_draw_sprite(disp, 320 - title->width / 2, 240 - menu->height / 2 + 10, title);
             free(title);
         }
 
         if (menu->text != NULL)
         {
-            sprite_t *text = dfs_loadf("/gfx/sprites/%s/%s.sprite", lang, menu->text);
+            sprite_t *text = dfs_load_spritef("/gfx/sprites/%s/%s.sprite", lang, menu->text);
             graphics_draw_sprite(disp, 320 - text->width / 2, 240 - menu->height / 2 + 75, text);
             free(text);
         }
@@ -137,9 +138,9 @@ void menu_draw(display_context_t disp, menu_t *menu)
         {
             sprite_t *option;
             if (menu->options[i].toggle != NULL)
-                option = dfs_loadf((i == menu->selected_option ? "/gfx/sprites/%s/%s_%d_selec.sprite" : "/gfx/sprites/%s/%s_%d.sprite"), lang, menu->options[i].text, menu->options[i].toggle(0));
+                option = dfs_load_spritef((i == menu->selected_option ? "/gfx/sprites/%s/%s_%d_selec.sprite" : "/gfx/sprites/%s/%s_%d.sprite"), lang, menu->options[i].text, menu->options[i].toggle(0));
             else
-                option = dfs_loadf((i == menu->selected_option ? "/gfx/sprites/%s/%s_selec.sprite" : "/gfx/sprites/%s/%s.sprite"), lang, menu->options[i].text);
+                option = dfs_load_spritef((i == menu->selected_option ? "/gfx/sprites/%s/%s_selec.sprite" : "/gfx/sprites/%s/%s.sprite"), lang, menu->options[i].text);
             graphics_draw_sprite(disp, 320 - option->width / 2, 240 + menu->height / 2 - 35 - 30 * (menu->options_size - 1 - i), option);
             free(option);
         }

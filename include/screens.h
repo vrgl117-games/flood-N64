@@ -26,6 +26,7 @@ bool screen_intro(display_context_t disp);
 void screen_lang(display_context_t disp);
 void screen_game(display_context_t disp);
 void screen_no_controller(display_context_t disp);
+void screen_resize_logo();
 void screen_title(display_context_t disp);
 void screen_timer_title();
 

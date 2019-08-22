@@ -6,8 +6,8 @@
  * of the Apache license. See the LICENSE file for details.
  */
 
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
 
 #include "rdp.h"
 
@@ -26,7 +26,18 @@ int rdp_draw_int_map(int x, int y, map_t *font, int n, int flags)
         x = rdp_draw_int_map(x, y, font, n / 10, flags);
 
     rdp_draw_sprite_with_texture(font->sprites[n % 10], x, y, flags);
-    return x + 11;
+    return x + 16;
+}
+
+int rdp_draw_int_map_padded(int x, int y, map_t *font, int n, int pad, int flags)
+{
+    if (n < pad)
+    {
+        rdp_draw_sprite_with_texture(font->sprites[0], x, y, flags);
+        return rdp_draw_int_map_padded(x + 16, y, font, n, pad / 10, flags);
+    }
+
+    return rdp_draw_int_map(x, y, font, n, flags);
 }
 
 void rdp_draw_filled_fullscreen(uint32_t color)

@@ -7,7 +7,9 @@
         "limits": "c",
         "type_traits": "c",
         "rdp.h": "c",
-        "fps.h": "c"
+        "fps.h": "c",
+        "colors.h": "c",
+        "stdlib.h": "c"
     },
     "editor.formatOnSave": true
 }

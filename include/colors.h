@@ -11,10 +11,10 @@
 
 #include <libdragon.h>
 
-#define COLOR_BG 0xa0b2fbff
-#define COLOR_FONT 0x737375ff
-#define COLOR_GRID_BG 0xf8f9ffff
+#define COLOR_BG 0xc0c0c0ff
+#define COLOR_MENU_BG 0xf8f8f8ff
 
+#define COLOR_GREY 0x404040ff
 #define COLOR_BLACK 0x000000ff
 #define COLOR_WHITE 0xffffffff
 #define COLOR_RED 0xe63a3fff
