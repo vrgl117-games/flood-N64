@@ -2,7 +2,14 @@
 
 Flood game for N64.
 
+Inspired by [Open Flood](https://github.com/GunshipPenguin/open_flood) game created
+by [Rhys Rustad-Elliott](www.rhysre.net).
+
 Support 1 player and Rumble Pak.
+
+![new_game](./misc/new_game.png?raw=true)
+![game](./misc/game.png?raw=true)
+![credits](./misc/credits.png?raw=true)
 
 ## Note
 
@@ -17,16 +24,21 @@ instead of the proprietary SDK used by official licensed Nintendo software.
 
 ## Building
 
-In order to build you will need the following open-source software installed:
+### Using Docker
 
-* [conker64's fork of libdragon development toolchain](https://github.com/conker64/libdragon)
+All development can be done using Docker. It's the easiest way to build the ROM on Windows and MacOS.
 
-Run `make` to produce the `Flood-64.z64` ROM file from this source tree.
+ * Install [Docker](https://docker.com)
+ * Run `make` to produce the `Flood-64.z64` ROM file.
 
-You can run `make docker` to use [Docker](https://docker.com).
+ ### On linux
+
+* Install [conker64's fork of libdragon development toolchain](https://github.com/conker64/libdragon)
+* Run `make Flood-64.z64` to produce the `Flood-64.z64` ROM file.
+
 
 ## Thanks
 
-* Thanks to [Shaun Taylor](https://github.com/DragonMinded) for libdragon.
+* Thanks to [Jennifer Taylor](https://github.com/DragonMinded) for libdragon.
 * Thanks to [conker64](https://github.com/conker64) and the [#n64dev](irc://irc.efnet.org/#n64dev) IRC community for their help.
 * Thanks to [Christopher Bonhage](https://github.com/meeq) for his work on [FlappyBird-N64](https://github.com/meeq/FlappyBird-N64).
