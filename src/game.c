@@ -17,8 +17,9 @@
 #include "game.h"
 #include "rdp.h"
 
+extern uint32_t colors[];
+
 static game_t game = {0};
-static uint32_t colors[9];
 // current size  0: 12x12, 1: 18x18, 2: 24x24
 static int current_size = 1;
 // current num colors  0: 4, 1: 6, 2:8
@@ -26,16 +27,6 @@ static int current_num_colors = 1;
 
 void game_init()
 {
-    // init colors
-    colors[0] = COLOR_RED;
-    colors[1] = COLOR_BLUE;
-    colors[2] = COLOR_GREEN;
-    colors[3] = COLOR_YELLOW;
-    colors[4] = COLOR_ORANGE;
-    colors[5] = COLOR_PURPLE;
-    colors[6] = COLOR_CYAN;
-    colors[7] = COLOR_PINK;
-    colors[8] = COLOR_BLACK;
 }
 
 void game_reset()
@@ -238,9 +229,9 @@ void game_draw(display_context_t disp, int grid_x, int grid_y)
         int x = 24;
         int y = (i + 1) * ((480 - (64 * game.num_colors / 2)) / (game.num_colors / 2 + 1)) + i * 64;
         if (i == game.selected_color)
-            rdp_draw_filled_rectangle_size(x - 4, y - 4, 72, 72, COLOR_GREY);
+            rdp_draw_filled_rectangle_size(x - 4, y - 4, 72, 72, colors[COLOR_GREY]);
 
-        rdp_draw_filled_rectangle_with_border_size(x, y, 64, 64, colors[i], COLOR_GREY);
+        rdp_draw_filled_rectangle_with_border_size(x, y, 64, 64, colors[i], colors[COLOR_GREY]);
     }
 
     // draw right column
@@ -249,13 +240,13 @@ void game_draw(display_context_t disp, int grid_x, int grid_y)
         int x = 552;
         int y = (i + 1) * ((480 - (64 * game.num_colors / 2)) / (game.num_colors / 2 + 1)) + i * 64;
         if (i + game.num_colors / 2 == game.selected_color)
-            rdp_draw_filled_rectangle_size(x - 4, y - 4, 72, 72, COLOR_GREY);
+            rdp_draw_filled_rectangle_size(x - 4, y - 4, 72, 72, colors[COLOR_GREY]);
 
-        rdp_draw_filled_rectangle_with_border_size(x, y, 64, 64, colors[i + game.num_colors / 2], COLOR_GREY);
+        rdp_draw_filled_rectangle_with_border_size(x, y, 64, 64, colors[i + game.num_colors / 2], colors[COLOR_GREY]);
     }
 
     //draw the board
-    rdp_draw_filled_rectangle_size(grid_x, grid_y, 368, 368, COLOR_GREY);
+    rdp_draw_filled_rectangle_size(grid_x, grid_y, 368, 368, colors[COLOR_GREY]);
     for (int x = 0; x < game.board_size; x++)
     {
         for (int y = 0; y < game.board_size; y++)
@@ -278,19 +269,19 @@ void game_draw(display_context_t disp, int grid_x, int grid_y)
 
             // up border
             if (y == 0 || game.cells[x][y] != game.cells[x][y - 1])
-                rdp_draw_filled_rectangle_size(xx - 1, yy, cell_size + 2, 2, COLOR_GREY);
+                rdp_draw_filled_rectangle_size(xx - 1, yy, cell_size + 2, 2, colors[COLOR_GREY]);
 
             // down border
             if (y == game.board_size - 1 || game.cells[x][y] != game.cells[x][y + 1])
-                rdp_draw_filled_rectangle_size(xx - 1, yy + cell_size - 1, cell_size + 2, 2, COLOR_GREY);
+                rdp_draw_filled_rectangle_size(xx - 1, yy + cell_size - 1, cell_size + 2, 2, colors[COLOR_GREY]);
 
             // left border
             if (x == 0 || game.cells[x][y] != game.cells[x - 1][y])
-                rdp_draw_filled_rectangle_size(xx, yy - 1, 2, cell_size + 2, COLOR_GREY);
+                rdp_draw_filled_rectangle_size(xx, yy - 1, 2, cell_size + 2, colors[COLOR_GREY]);
 
             // right border
             if (x == game.board_size - 1 || game.cells[x][y] != game.cells[x + 1][y])
-                rdp_draw_filled_rectangle_size(xx + cell_size - 1, yy - 1, 2, cell_size + 2, COLOR_GREY);
+                rdp_draw_filled_rectangle_size(xx + cell_size - 1, yy - 1, 2, cell_size + 2, colors[COLOR_GREY]);
         }
     }
 }

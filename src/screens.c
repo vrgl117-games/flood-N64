@@ -22,6 +22,8 @@ static volatile int tick = 0;
 static map_t *font;
 static map_t *logo;
 
+extern uint32_t colors[];
+
 void screen_timer_title()
 {
     tick++;
@@ -48,7 +50,7 @@ bool screen_intro(display_context_t disp)
 
     rdp_attach(disp);
 
-    rdp_draw_filled_fullscreen(COLOR_BLACK);
+    rdp_draw_filled_fullscreen(colors[COLOR_BLACK]);
 
     rdp_detach_display();
     sprite_t *intro = NULL;
@@ -92,10 +94,10 @@ void screen_lang(display_context_t disp)
 
     rdp_attach(disp);
 
-    rdp_draw_filled_fullscreen(COLOR_BLACK);
+    rdp_draw_filled_fullscreen(colors[COLOR_BLACK]);
 
     // display the white border around the selected flag.
-    rdp_draw_filled_rectangle_with_border_size(220 - 4, 45 + 45 * selected_lang + 100 * selected_lang - 4, 208, 108, COLOR_BLACK, COLOR_WHITE);
+    rdp_draw_filled_rectangle_with_border_size(220 - 4, 45 + 45 * selected_lang + 100 * selected_lang - 4, 208, 108, colors[COLOR_BLACK], colors[COLOR_WHITE]);
 
     rdp_detach_display();
 
@@ -117,7 +119,7 @@ void screen_no_controller(display_context_t disp)
 {
     rdp_attach(disp);
 
-    rdp_draw_filled_fullscreen(COLOR_BLACK);
+    rdp_draw_filled_fullscreen(colors[COLOR_BLACK]);
 
     map_t *no_controller = dfs_load_map("/gfx/maps/%s/no_controller-%d_%d.sprite", lang_selected_str());
     rdp_draw_sprite_with_texture_map(no_controller, 320 - no_controller->width / 2, 240 - no_controller->height / 2, 0);
@@ -131,12 +133,12 @@ void screen_game(display_context_t disp)
 {
     rdp_attach(disp);
 
-    rdp_draw_filled_fullscreen(COLOR_BG);
+    rdp_draw_filled_fullscreen(colors[COLOR_BG]);
 
     rdp_draw_sprite_with_texture_map(logo, 132, 11, 0);
 
     // draw score.
-    rdp_draw_filled_rectangle_with_border_size(410, 16, 90, 30, COLOR_BG, COLOR_GREY);
+    rdp_draw_filled_rectangle_with_border_size(410, 16, 90, 30, colors[COLOR_BG], colors[COLOR_GREY]);
     int x = rdp_draw_int_map_padded(414, 18, font, game_turn(), 10, 0);
     rdp_draw_sprite_with_texture(font->sprites[10], x, 18, 0);
     rdp_draw_int_map(x + 17, 18, font, game_max_turn(), 0);
@@ -152,7 +154,7 @@ void screen_title(display_context_t disp)
 {
     rdp_attach(disp);
 
-    rdp_draw_filled_fullscreen(COLOR_BG);
+    rdp_draw_filled_fullscreen(colors[COLOR_BG]);
 
     rdp_draw_sprite_with_texture_map(logo, 320 - logo->width / 2, 18, 0);
 
