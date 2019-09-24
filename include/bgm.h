@@ -11,6 +11,8 @@
 
 #include <libdragon.h>
 
+#include <mikmod.h>
+
 #define FREQUENCY_44KHZ 44100
 #define NUM_BGMS 3
 

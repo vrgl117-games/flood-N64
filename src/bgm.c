@@ -12,32 +12,48 @@
 #include "bgm.h"
 #include "dfs.h"
 
-static signed short *buffer;
-static int fp;
+MIKMODAPI extern UWORD md_mode __attribute__((section(".data")));
+MIKMODAPI extern UWORD md_mixfreq __attribute__((section(".data")));
+
 // current bgm playing 0: not playing; 1,2,3:bgms
 static int current_bgm;
 static bool paused = false;
+MODULE *module = NULL;
 
 void bgm_init()
 {
     audio_init(FREQUENCY_44KHZ, 4);
-    buffer = malloc(sizeof(signed short) * audio_get_buffer_length() * 2);
+    MikMod_RegisterAllDrivers();
+    MikMod_RegisterAllLoaders();
+
+    md_mode |= DMODE_16BITS;
+    md_mode |= DMODE_SOFT_MUSIC;
+    md_mode |= DMODE_SOFT_SNDFX;
+    md_mode |= DMODE_STEREO;
+
+    md_mixfreq = audio_get_frequency();
+
+    MikMod_Init("");
+
     current_bgm = 0;
 }
 
 void bgm_start()
 {
     current_bgm = 1 + rand() % (NUM_BGMS - 1);
-    fp = dfs_openf("/sfx/bgms/bgm%d.raw", current_bgm);
+    char buffer[24];
+    sprintf(buffer, "rom://sfx/bgms/bgm%d.mod", current_bgm);
+    module = Player_Load(buffer, 256, 0);
+    audio_write_silence();
+    audio_write_silence();
+    Player_Start(module);
     paused = false;
 }
 
 void bgm_stop()
 {
-    current_bgm = 0;
-    dfs_close(fp);
-    fp = 0;
-    free(buffer);
+    Player_Stop();
+    Player_Free(module);
     audio_close();
 }
 
@@ -47,7 +63,10 @@ int bgm_toggle(int change)
     {
         // if a bgm is already playing, close it
         if (current_bgm != 0)
-            dfs_close(fp);
+        {
+            Player_Stop();
+            Player_Free(module);
+        }
 
         // change bgm
         current_bgm += change;
@@ -59,7 +78,13 @@ int bgm_toggle(int change)
             current_bgm = 0;
 
         if (current_bgm != 0)
-            fp = dfs_openf("/sfx/bgms/bgm%d.raw", current_bgm);
+        {
+            char buffer[24];
+            sprintf(buffer, "rom://sfx/bgms/bgm%d.mod", current_bgm);
+            module = Player_Load(buffer, 256, 0);
+            audio_write_silence();
+            Player_Start(module);
+        }
     }
     return current_bgm;
 }
@@ -71,21 +96,8 @@ void bgm_play_pause()
 
 void bgm_update()
 {
-    if (!paused && current_bgm != 0 && audio_can_write())
+    if (!paused && current_bgm != 0)
     {
-        int did_read = dfs_read(buffer, sizeof(signed short), audio_get_buffer_length(), fp);
-        did_read = did_read / sizeof(signed short);
-        if (dfs_eof(fp))
-            bgm_toggle(current_bgm == NUM_BGMS ? 2 : 1);
-        // |a|b|c|d|.|.|.|.|.|.| -> |a|a|b|b|c|c|d|d|.|.|
-        for (int i = did_read - 1; i >= 0; i--)
-        {
-            buffer[(i * 2) + 1] = buffer[i];
-            buffer[i * 2] = buffer[i];
-        }
-        // |a|a|b|b|c|c|d|d|.|.| -> |a|a|b|b|c|c|d|d|0|0|
-        //for (int i = did_read; i < buffer_length * 2; i++)
-        //    buffer[i] = 0;
-        audio_write(buffer);
+        MikMod_Update();
     }
 }

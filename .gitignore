@@ -1,7 +1,7 @@
 Flood-64.*
 *.o
 *.sprite
-*.raw
+*.mod
 .vscode/ipch/
 .DS_Store
 *~
