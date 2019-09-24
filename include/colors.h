@@ -11,19 +11,24 @@
 
 #include <libdragon.h>
 
-#define COLOR_BG 0xc0c0c0ff
-#define COLOR_MENU_BG 0xf8f8f8ff
+typedef enum
+{
+    COLOR_RED,
+    COLOR_BLUE,
+    COLOR_GREEN,
+    COLOR_YELLOW,
+    COLOR_ORANGE,
+    COLOR_PURPLE,
+    COLOR_CYAN,
+    COLOR_PINK,
+    COLOR_BLACK,
+    COLOR_BG,
+    COLOR_MENU_BG,
+    COLOR_GREY,
+    COLOR_WHITE
 
-#define COLOR_GREY 0x404040ff
-#define COLOR_BLACK 0x000000ff
-#define COLOR_WHITE 0xffffffff
-#define COLOR_RED 0xe63a3fff
-#define COLOR_BLUE 0x708cfdff
-#define COLOR_GREEN 0x359c35ff
-#define COLOR_YELLOW 0xffce2cff
-#define COLOR_ORANGE 0xff6f43ff
-#define COLOR_PURPLE 0xa13cb1ff
-#define COLOR_CYAN 0x38ffffff
-#define COLOR_PINK 0xf2739dff
+} colors_name_t;
+
+void colors_init();
 
 #endif //__COLORS_H__

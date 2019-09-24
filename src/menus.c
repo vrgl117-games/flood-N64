@@ -21,6 +21,7 @@
 #include "screens.h"
 
 extern menu_t menu;
+extern uint32_t colors[];
 
 /* menus */
 menu_t menu_credits;
@@ -115,7 +116,7 @@ void menu_draw(display_context_t disp, menu_t *menu)
             menu->height -= h_step;
     }
     rdp_attach(disp);
-    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, COLOR_MENU_BG, COLOR_GREY);
+    rdp_draw_filled_rectangle_with_border_size(320 - menu->width / 2, 240 - menu->height / 2, menu->width, menu->height, colors[COLOR_MENU_BG], colors[COLOR_GREY]);
     rdp_detach_display();
 
     if (menu->width >= menu->max_width && menu->height >= menu->max_height)
