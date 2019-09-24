@@ -20,24 +20,24 @@ void rdp_attach(display_context_t disp)
     rdp_set_default_clipping();
 }
 
-int rdp_draw_int_map(int x, int y, map_t *font, int n, int flags)
+int rdp_draw_int_map(int x, int y, map_t *font, int n)
 {
     if (n >= 10)
-        x = rdp_draw_int_map(x, y, font, n / 10, flags);
+        x = rdp_draw_int_map(x, y, font, n / 10);
 
-    rdp_draw_sprite_with_texture(font->sprites[n % 10], x, y, flags);
+    rdp_draw_sprite_with_texture(font->sprites[n % 10], x, y);
     return x + 16;
 }
 
-int rdp_draw_int_map_padded(int x, int y, map_t *font, int n, int pad, int flags)
+int rdp_draw_int_map_padded(int x, int y, map_t *font, int n, int pad)
 {
     if (n < pad)
     {
-        rdp_draw_sprite_with_texture(font->sprites[0], x, y, flags);
-        return rdp_draw_int_map_padded(x + 16, y, font, n, pad / 10, flags);
+        rdp_draw_sprite_with_texture(font->sprites[0], x, y);
+        return rdp_draw_int_map_padded(x + 16, y, font, n, pad / 10);
     }
 
-    return rdp_draw_int_map(x, y, font, n, flags);
+    return rdp_draw_int_map(x, y, font, n);
 }
 
 void rdp_draw_filled_fullscreen(uint32_t color)
@@ -68,7 +68,7 @@ void rdp_draw_filled_rectangle_with_sized_border_size(int x, int y, int width, i
     rdp_draw_filled_rectangle(x + size_border, y + size_border, x + width - size_border, y + height - size_border);
 }
 
-void rdp_draw_sprite_with_texture(sprite_t *sp, int x, int y, int flags)
+void rdp_draw_sprite_with_texture(sprite_t *sp, int x, int y)
 {
     rdp_enable_texture_copy();
     rdp_sync(SYNC_PIPE);
@@ -76,22 +76,20 @@ void rdp_draw_sprite_with_texture(sprite_t *sp, int x, int y, int flags)
     rdp_draw_sprite(0, x, y);
 }
 
-void rdp_draw_sprite_with_texture_map(map_t *map, int x, int y, int flags)
+void rdp_draw_sprite_with_texture_map(map_t *map, int x, int y)
 {
     int xx = 0;
     int yy = 0;
 
     for (int i = 0; i < map->slices; i++)
     {
-        int ii = (flags == 3 ? map->slices - 1 - i : i);
-        rdp_draw_sprite_with_texture(map->sprites[ii], x + xx, y + yy, flags);
+        rdp_draw_sprite_with_texture(map->sprites[i], x + xx, y + yy);
         if (i % map->mod == map->mod - 1)
         {
-            yy += map->sprites[ii]->height;
+            yy += map->sprites[i]->height;
             xx = 0;
         }
         else
-            xx += map->sprites[ii]->width;
+            xx += map->sprites[i]->width;
     }
 }
-

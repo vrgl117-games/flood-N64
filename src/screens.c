@@ -122,7 +122,7 @@ void screen_no_controller(display_context_t disp)
     rdp_draw_filled_fullscreen(colors[COLOR_BLACK]);
 
     map_t *no_controller = dfs_load_map("/gfx/maps/%s/no_controller-%d_%d.sprite", lang_selected_str());
-    rdp_draw_sprite_with_texture_map(no_controller, 320 - no_controller->width / 2, 240 - no_controller->height / 2, 0);
+    rdp_draw_sprite_with_texture_map(no_controller, 320 - no_controller->width / 2, 240 - no_controller->height / 2);
     dfs_free_map(no_controller);
 
     rdp_detach_display();
@@ -135,13 +135,13 @@ void screen_game(display_context_t disp)
 
     rdp_draw_filled_fullscreen(colors[COLOR_BG]);
 
-    rdp_draw_sprite_with_texture_map(logo, 132, 11, 0);
+    rdp_draw_sprite_with_texture_map(logo, 132, 11);
 
     // draw score.
     rdp_draw_filled_rectangle_with_border_size(410, 16, 90, 30, colors[COLOR_BG], colors[COLOR_GREY]);
-    int x = rdp_draw_int_map_padded(414, 18, font, game_turn(), 10, 0);
-    rdp_draw_sprite_with_texture(font->sprites[10], x, 18, 0);
-    rdp_draw_int_map(x + 17, 18, font, game_max_turn(), 0);
+    int x = rdp_draw_int_map_padded(414, 18, font, game_turn(), 10);
+    rdp_draw_sprite_with_texture(font->sprites[10], x, 18);
+    rdp_draw_int_map(x + 17, 18, font, game_max_turn());
 
     // draw the board.
     game_draw(disp, 132, 64);
@@ -156,19 +156,19 @@ void screen_title(display_context_t disp)
 
     rdp_draw_filled_fullscreen(colors[COLOR_BG]);
 
-    rdp_draw_sprite_with_texture_map(logo, 320 - logo->width / 2, 18, 0);
+    rdp_draw_sprite_with_texture_map(logo, 320 - logo->width / 2, 18);
 
     // draw only press start half of the time (blink).
     if (tick % 14 > 7)
     {
         map_t *press_start = dfs_load_map("/gfx/maps/%s/press_start-%d_%d.sprite", lang_selected_str());
-        rdp_draw_sprite_with_texture_map(press_start, 320 - press_start->width / 2, 400, 0);
+        rdp_draw_sprite_with_texture_map(press_start, 320 - press_start->width / 2, 400);
         dfs_free_map(press_start);
     }
 
     // draw the version.
     sprite_t *version = dfs_load_sprite("/gfx/sprites/version.sprite");
-    rdp_draw_sprite_with_texture(version, 640 - version->width - 6, 480 - version->height - 6, 0);
+    rdp_draw_sprite_with_texture(version, 640 - version->width - 6, 480 - version->height - 6);
     free(version);
 
     rdp_detach_display();
