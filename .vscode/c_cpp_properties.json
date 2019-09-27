@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/../libdragon/include/**"
+                "${workspaceFolder}/../libdragon/include/**",
+                "${workspaceFolder}/../vrgl117/mikmod/libmikmod/include/**"
             ],
             "defines": [],
             "macFrameworkPath": [

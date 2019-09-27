@@ -90,29 +90,37 @@ convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsi
 convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Nombre de couleurs: 8 >" -extent x32 resources/gfx/sprites/fr/colors_2_selec.png
 convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Cantidad de colores: 8 >" -extent x32 resources/gfx/sprites/es/colors_2_selec.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: Track #1  " -extent x32 resources/gfx/sprites/en/music_1.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: Track #1  " -extent x32 resources/gfx/sprites/fr/music_1.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: Track #1  " -extent x32 resources/gfx/sprites/es/music_1.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: pleasant  " -extent x32 resources/gfx/sprites/en/music_1.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: pleasant  " -extent x32 resources/gfx/sprites/fr/music_1.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: pleasant  " -extent x32 resources/gfx/sprites/es/music_1.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: Track #1 >" -extent x32 resources/gfx/sprites/en/music_1_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: Track #1 >" -extent x32 resources/gfx/sprites/fr/music_1_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: Track #1 >" -extent x32 resources/gfx/sprites/es/music_1_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: pleasant >" -extent x32 resources/gfx/sprites/en/music_1_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: pleasant >" -extent x32 resources/gfx/sprites/fr/music_1_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: pleasant >" -extent x32 resources/gfx/sprites/es/music_1_selec.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: Track #2  " -extent x32 resources/gfx/sprites/en/music_2.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: Track #2  " -extent x32 resources/gfx/sprites/fr/music_2.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: Track #2  " -extent x32 resources/gfx/sprites/es/music_2.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: sad  " -extent x32 resources/gfx/sprites/en/music_2.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: sad  " -extent x32 resources/gfx/sprites/fr/music_2.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: sad  " -extent x32 resources/gfx/sprites/es/music_2.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: Track #2 >" -extent x32 resources/gfx/sprites/en/music_2_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: Track #2 >" -extent x32 resources/gfx/sprites/fr/music_2_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: Track #2 >" -extent x32 resources/gfx/sprites/es/music_2_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: sad >" -extent x32 resources/gfx/sprites/en/music_2_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: sad >" -extent x32 resources/gfx/sprites/fr/music_2_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: sad >" -extent x32 resources/gfx/sprites/es/music_2_selec.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: Track #3  " -extent x32 resources/gfx/sprites/en/music_3.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: Track #3  " -extent x32 resources/gfx/sprites/fr/music_3.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: Track #3  " -extent x32 resources/gfx/sprites/es/music_3.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: shine  " -extent x32 resources/gfx/sprites/en/music_3.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: shine  " -extent x32 resources/gfx/sprites/fr/music_3.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: shine  " -extent x32 resources/gfx/sprites/es/music_3.png
 
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: Track #3 >" -extent x32 resources/gfx/sprites/en/music_3_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: Track #3 >" -extent x32 resources/gfx/sprites/fr/music_3_selec.png
-convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: Track #3 >" -extent x32 resources/gfx/sprites/es/music_3_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: shine >" -extent x32 resources/gfx/sprites/en/music_3_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: shine >" -extent x32 resources/gfx/sprites/fr/music_3_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: shine >" -extent x32 resources/gfx/sprites/es/music_3_selec.png
+
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: spider  " -extent x32 resources/gfx/sprites/en/music_4.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: spider  " -extent x32 resources/gfx/sprites/fr/music_4.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musica: spider  " -extent x32 resources/gfx/sprites/es/music_4.png
+
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Music: spider >" -extent x32 resources/gfx/sprites/en/music_4_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musique: spider >" -extent x32 resources/gfx/sprites/fr/music_4_selec.png
+convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontb" -pointsize 18 label:"< Musica: spider >" -extent x32 resources/gfx/sprites/es/music_4_selec.png
 
 convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Music: OFF  " -extent x32 resources/gfx/sprites/en/music_0.png
 convert -strip -background "#f8f8f8ff" -fill "#404040ff" -font "$fontr" -pointsize 18 label:"  Musique: OFF  " -extent x32 resources/gfx/sprites/fr/music_0.png

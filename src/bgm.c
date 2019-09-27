@@ -15,7 +15,7 @@
 MIKMODAPI extern UWORD md_mode __attribute__((section(".data")));
 MIKMODAPI extern UWORD md_mixfreq __attribute__((section(".data")));
 
-// current bgm playing 0: not playing; 1,2,3:bgms
+// current bgm playing 0: not playing; 1,2,3,4:bgms
 static int current_bgm;
 static bool paused = false;
 MODULE *module = NULL;
@@ -41,7 +41,7 @@ void bgm_init()
 void bgm_start()
 {
     current_bgm = 1 + rand() % (NUM_BGMS - 1);
-    char buffer[24];
+    char buffer[25];
     sprintf(buffer, "rom://sfx/bgms/bgm%d.mod", current_bgm);
     module = Player_Load(buffer, 256, 0);
     audio_write_silence();

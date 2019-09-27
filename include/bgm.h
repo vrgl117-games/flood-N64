@@ -14,7 +14,7 @@
 #include <mikmod.h>
 
 #define FREQUENCY_44KHZ 44100
-#define NUM_BGMS 3
+#define NUM_BGMS 4
 
 void bgm_init();
 void bgm_start();
