@@ -1,5 +1,5 @@
 FROM anacierdem/libdragon
 
-RUN apt-get update && apt-get install -yq git libsox-fmt-all sox
+RUN cd /tmp && git clone https://github.com/vrgl117-games/mikmod.git && cd mikmod/libmikmod/n64 && make -f Makefile.n64 install
 
 WORKDIR /Flood-N64
