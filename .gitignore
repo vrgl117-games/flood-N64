@@ -4,4 +4,4 @@ Flood-64.*
 .vscode/ipch/
 .DS_Store
 *~
-filesystem/hash
+filesystem/
