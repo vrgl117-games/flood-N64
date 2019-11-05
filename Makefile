@@ -15,13 +15,13 @@ OBJCOPY = $(GCCN64PREFIX)objcopy
 
 all: build
 
-build: ##    Create rom.                                                                                                                              
+build: ##    Create rom.
 	@docker --version &> /dev/null
 	@if [ $$? -ne 0 ]; then echo "Building rom..." && make $(PROG_NAME).z64; fi
 	@if [ $$? -eq 0 ]; then echo "Building rom inside docker environment..." && make docker; fi
 
 docker: setup
-	@docker run -v ${CURDIR}:/game build make $(PROG_NAME).z64
+	@docker run --user $(shell id -u):$(shell id -g) -v ${CURDIR}:/game build make $(PROG_NAME).z64
 
 rebuild: clean build	##  Erase temp files and create the rom.
 
@@ -57,7 +57,7 @@ $(PROG_NAME).dfs: $(SPRITES) $(BGMS)
 	@mkdir -p ./filesystem/
 	@echo `git rev-parse HEAD` > ./filesystem/hash
 	$(MKDFSPATH) $@ ./filesystem/
-	
+
 # rom
 $(PROG_NAME).z64: $(PROG_NAME).bin $(PROG_NAME).dfs
 	@rm -f $@
@@ -76,7 +76,7 @@ cen64:		##    Start rom in CEN64 emulator.
 	$(CEN64_DIR)/cen64 -multithread -controller num=1,pak=rumble $(CEN64_DIR)/pifdata.bin $(PROG_NAME).z64
 
 flashair: 	## Flash rom to EverDrive using a flashair SD card.
-	curl -X POST -F 'file=@$(PROG_NAME).z64' http://vieux_flashair/upload.cgi
+	curl -X POST -F 'file=@$(PROG_NAME).z64' http://flashair/upload.cgi
 
 clean:		##    Cleanup temp files.
 	@echo "Cleaning up temp files..."

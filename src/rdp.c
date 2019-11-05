@@ -73,7 +73,7 @@ void rdp_draw_sprite_with_texture(sprite_t *sp, int x, int y)
     rdp_enable_texture_copy();
     rdp_sync(SYNC_PIPE);
     rdp_load_texture(0, 0, MIRROR_DISABLED, sp);
-    rdp_draw_sprite(0, x, y);
+    rdp_draw_sprite(0, x, y, MIRROR_DISABLED);
 }
 
 void rdp_draw_sprite_with_texture_map(map_t *map, int x, int y)
